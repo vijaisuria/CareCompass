@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* Default theme (dark) */
+:root {
+  --background-color: #001f3f;
+  --text-color: #ffffff;
+  --navbar-background: rgba(255, 255, 255, 0.15);
+  --navbar-text-color: #ffffff;
+  --navbar-hover-color: #82cfff;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  --background-image: linear-gradient(
+    to right bottom,
+    #6a0dad,
+    #4a229e,
+    #2c288c,
+    #112977,
+    #002660,
+    #002654,
+    #002447,
+    #042239,
+    #0c2334,
+    #14242f,
+    #1c252a,
+    #232526
+  );
+}
+
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #001f3f;
+  --navbar-background: rgba(0, 0, 0, 0.05);
+  --navbar-text-color: #001f3f;
+  --navbar-hover-color: #0056b3;
+  --background-image: linear-gradient(
+    to right bottom,
+    #ffffff,
+    #c0c0cb,
+    #828499,
+    #464e6b,
+    #001f3f
+  );
+}
+
+body {
+  padding: 5px;
+  margin: 16px;
+  font-family: "Mona Sans", "Roboto", serif;
+  background-color: var(--background-color);
+  background: center no-repeat var(--background-image);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+}
