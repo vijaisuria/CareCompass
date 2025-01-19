@@ -1,0 +1,118 @@
+/* Home.css */
+
+/* Keyframes for the initial slide-up animation */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for continuous scaling and movement */
+@keyframes floatEffect {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+/* Logo initial and continuous animation */
+.logo-animation {
+  animation: slideUp 1.5s ease-in-out, floatEffect 3s ease-in-out infinite;
+}
+/* Galaxy container with stars and effects */
+.galaxy-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Adjust to fit the illustration size */
+  margin: 10 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Light ray effect */
+.light-rays {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+  animation: spinLight 6s linear infinite;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+/* Stars container */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Star styles */
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Glowing effect */
+  opacity: 0;
+  animation: riseShine 5s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+/* Keyframes for rising and glowing effect */
+@keyframes riseShine {
+  0% {
+    transform: translateY(50px) scale(0.5); /* Start from below with smaller size */
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0) scale(1.2); /* Glow and rise to position */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px) scale(1); /* Slight upward shift */
+    opacity: 0.8;
+  }
+}
+
+/* Keyframes for slight movement */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px); /* Slight horizontal movement */
+  }
+}
+
+/* Spinning light rays */
+@keyframes spinLight {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+.feature-card {
+  background-image: linear-gradient(rgb(80, 70, 229) 0%, rgb(43, 49, 203) 100%);
+  border-color: rgb(93, 79, 240);
+}
