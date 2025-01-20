@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const logRoutes = require("./routes/logRoutes");
 const goalRoutes = require("./routes/goalRoutes");
 const roadmapRoutes = require("./routes/roadmapRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 
 require("dotenv").config();
 
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/logs", logRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/roadmap", roadmapRoutes);
+app.use("/api/chat", chatRoutes);
 
 // Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Goal = require("../models/Goal");
+const Log = require("../models/Log");
+
+const { getLearningPath, getUniversalSkills } = require("../utils/roadmap");
+
+const { getMilestones } = require("../utils/milestone");
 
 // Get all goals by user ID
 router.get("/user/:userId", async (req, res) => {
@@ -44,7 +49,33 @@ router.post("/", async (req, res) => {
       deadline,
     });
 
+    // education category
+    if (category === "educational") {
+      const { role, userSkills } = req.body;
+      const universalSkills = await getUniversalSkills(role, userSkills);
+      const learningPath = await getLearningPath(role, universalSkills);
+
+      newGoal.roadMapJson = learningPath;
+    } else {
+      const milestones = await getMilestones(req.body);
+
+      newGoal.milestones = milestones;
+    }
+
     await newGoal.save();
+
+    const log = new Log({
+      userId,
+      date: new Date(),
+      activityType: "goal",
+      activityDetails: {
+        details: "Goal Created" + newGoal.title,
+        goalId: newGoal._id,
+      },
+    });
+
+    await log.save();
+
     res
       .status(201)
       .json({ message: "Goal created successfully", goal: newGoal });
@@ -56,7 +87,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update a goal by ID (add/update milestones)
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,12 +102,30 @@ router.put("/:id", async (req, res) => {
         const existingMilestone = goal.milestones.id(milestone._id);
         if (existingMilestone) {
           // Update existing milestone
-          Object.assign(existingMilestone, milestone);
+          existingMilestone.set(milestone);
+
+          // If milestone is completed, set completedAt if not already set
+          if (milestone.completed && !existingMilestone.completedAt) {
+            existingMilestone.completedAt = new Date();
+          }
         } else {
           // Add new milestone
           goal.milestones.push(milestone);
         }
       });
+    }
+
+    // Check if all milestones are completed
+    const allCompleted = goal.milestones.every(
+      (milestone) => milestone.completed
+    );
+
+    if (allCompleted) {
+      goal.completed = true;
+      goal.completedAt = goal.completedAt || new Date(); // Set completedAt if not already set
+    } else {
+      goal.completed = false; // Reset if any milestone is incomplete
+      goal.completedAt = null;
     }
 
     await goal.save();

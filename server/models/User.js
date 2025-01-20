@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+    conversationHistory: { type: Array, default: [] },
   },
   {
     timestamps: true,

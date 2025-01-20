@@ -63,9 +63,9 @@ content-type: application/json
 
 {
   "userId": "678da7d24178979d7a866710",
-  "title": "Learn Node.js",
-  "description": "Master backend development",
-  "category": "educational",
+  "title": "Build Biceps",
+  "description": "I am new bie, beginner to Gym",
+  "category": "personal",
   "deadline": "2025-06-01"
 }
 
@@ -75,26 +75,84 @@ GET http://localhost:5000/api/goals/user/678da7d24178979d7a866710 HTTP/1.1
 
 ###
 
-GET http://localhost:5000/api/goals/678dd23f02e16c814885cf11 HTTP/1.1
+GET http://localhost:5000/api/goals/678fbb619186f1dbb65610c2 HTTP/1.1
 
 ###
 
-PUT http://localhost:5000/api/goals/678dd23f02e16c814885cf11 HTTP/1.1
+PUT http://localhost:5000/api/goals/678fbb619186f1dbb65610c2 HTTP/1.1
 content-type: application/json
 
 {
   "milestones": [
     {
-      "_id": "678dd2b002e16c814885cf16",
-      "title": "Set up environment",
-      "description": "Install Node.js, MongoDB, and necessary tools",
-      "deadline": "2025-01-25",
-      "completed": false
+      "title": "Join a Gym and Set a Routine",
+      "description": "Choose a gym, sign up, and establish a workout schedule (3-4 days per week).",
+      "deadline": "2025-01-28T00:00:00.000Z",
+      "completed": true,
+      "_id": "678fbb6b9186f1dbb65610c3"
     },
     {
-      "title": "Learn Express.js",
-      "description": "Understand middleware and routing",
-      "deadline": "2025-02-01"
+      "title": "Learn Proper Form for Bicep Exercises",
+      "description": "Work with a trainer or watch tutorials to master proper techniques for bicep curls, hammer curls, and other key exercises.",
+      "deadline": "2025-02-05T00:00:00.000Z",
+      "completed": true,
+      "_id": "678fbb6b9186f1dbb65610c4"
+    },
+    {
+      "title": "Build a Beginner Workout Plan",
+      "description": "Create a workout plan including bicep exercises and complementary muscle groups (e.g., back and shoulders).",
+      "deadline": "2025-02-15T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610c5"
+    },
+    {
+      "title": "Increase Consistency to 4-5 Days Weekly",
+      "description": "Gradually increase workout frequency to 4-5 days per week while focusing on form and endurance.",
+      "deadline": "2025-03-01T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610c6"
+    },
+    {
+      "title": "Track Progress and Adjust Weights",
+      "description": "Start tracking your reps, sets, and weights for bicep exercises and adjust for gradual improvement.",
+      "deadline": "2025-03-15T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610c7"
+    },
+    {
+      "title": "Incorporate Progressive Overload",
+      "description": "Increase resistance or reps every 2-3 weeks to challenge your biceps and promote muscle growth.",
+      "deadline": "2025-04-01T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610c8"
+    },
+    {
+      "title": "Add Isolation and Compound Exercises",
+      "description": "Introduce exercises like chin-ups and preacher curls to target your biceps from different angles.",
+      "deadline": "2025-04-15T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610c9"
+    },
+    {
+      "title": "Evaluate Nutrition and Supplementation",
+      "description": "Ensure your diet supports muscle growth with enough protein and consider supplements like whey protein if needed.",
+      "deadline": "2025-05-01T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610ca"
+    },
+    {
+      "title": "Achieve Visible Bicep Growth",
+      "description": "By consistently following your workout plan, achieve noticeable bicep development.",
+      "deadline": "2025-05-15T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610cb"
+    },
+    {
+      "title": "Finalize and Celebrate Progress",
+      "description": "Celebrate your improved biceps and establish a maintenance or advanced plan for continued growth.",
+      "deadline": "2025-06-01T00:00:00.000Z",
+      "completed": false,
+      "_id": "678fbb6b9186f1dbb65610cc"
     }
   ]
 }
@@ -107,4 +165,14 @@ content-type: application/json
 {
   "role": "Frontend Engineer",
   "userSkills": ["HTML", "CSS", "JavaScript"]
+}
+
+###
+
+POST http://localhost:5000/api/chat HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "678da7d24178979d7a866710",
+  "message": "Hello, who are you?"
 }
