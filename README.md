@@ -2,6 +2,8 @@
 
 _This is a submission for the [GitHub Copilot Challenge ](https://dev.to/challenges/github): New Beginnings_
 
+[Live Demo](https://nice-sand-070a4bc00.4.azurestaticapps.net) - Explore the full functionality of CareCompass in real-time.
+
 ## What I Built
 
 **CareCompass: Your Companion for Emotional Well-Being and Goal Success**
