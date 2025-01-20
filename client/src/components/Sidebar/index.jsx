@@ -30,7 +30,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex ">
       {/* Sidebar Toggle Button */}
       <span
         className="absolute text-4xl top-9 left-4 cursor-pointer btn rounded-circle px-2 d-inline-flex align-items-center justify-content-center"

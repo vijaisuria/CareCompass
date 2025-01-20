@@ -28,3 +28,83 @@ content-type: application/json
   "email": "test@example.com",
   "password": "yourpassword"
 }
+
+###
+
+GET http://localhost:5000/api/auth/user/678da7d24178979d7a866710 HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/logs HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "678da7d24178979d7a866710",
+  "date": "2025-01-20T10:30:00.000Z",
+  "activityType": "chat",
+  "mood": "happy",
+  "activityDetails": {
+    "message": "Discussed project updates and planning."
+  }
+}
+
+###
+
+GET http://localhost:5000/api/logs/user/678da7d24178979d7a866710 HTTP/1.1
+
+###
+
+GET http://localhost:5000/api/logs/678db02962e881ad852a043c HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/goals HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "678da7d24178979d7a866710",
+  "title": "Learn Node.js",
+  "description": "Master backend development",
+  "category": "educational",
+  "deadline": "2025-06-01"
+}
+
+###
+
+GET http://localhost:5000/api/goals/user/678da7d24178979d7a866710 HTTP/1.1
+
+###
+
+GET http://localhost:5000/api/goals/678dd23f02e16c814885cf11 HTTP/1.1
+
+###
+
+PUT http://localhost:5000/api/goals/678dd23f02e16c814885cf11 HTTP/1.1
+content-type: application/json
+
+{
+  "milestones": [
+    {
+      "_id": "678dd2b002e16c814885cf16",
+      "title": "Set up environment",
+      "description": "Install Node.js, MongoDB, and necessary tools",
+      "deadline": "2025-01-25",
+      "completed": false
+    },
+    {
+      "title": "Learn Express.js",
+      "description": "Understand middleware and routing",
+      "deadline": "2025-02-01"
+    }
+  ]
+}
+
+###
+
+POST http://localhost:5000/api/roadmap/678dd23f02e16c814885cf11 HTTP/1.1
+content-type: application/json
+
+{
+  "role": "Frontend Engineer",
+  "userSkills": ["HTML", "CSS", "JavaScript"]
+}

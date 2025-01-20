@@ -26,6 +26,7 @@ const goalSchema = new mongoose.Schema(
     deadline: { type: Date },
     completed: { type: Boolean, default: false },
     completedAt: { type: Date },
+    roadMapJson: { type: mongoose.Schema.Types.Mixed },
   },
   { timestamps: true }
 );

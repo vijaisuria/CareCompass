@@ -17,6 +17,12 @@ import Register from "./pages/auth/Register";
 
 import ChatPage from "./pages/chat";
 import CalendarPage from "./pages/calendar";
+import GoalsDisplay from "./components/Goal";
+import LoadingPage from "./pages/skillsync/Loading";
+import Roadmap from "./pages/skillsync/Roadmap";
+import LearningModule from "./pages/skillsync/LearningModule";
+import SkillSyncPortal from "./pages/skillsync";
+import CreateGoalForm from "./components/Goal/CreateGoal";
 
 const PrivateRoute = ({ children }) => {
   // Check authentication status
@@ -26,27 +32,6 @@ const PrivateRoute = ({ children }) => {
 };
 
 function App() {
-  const logs = [
-    {
-      userId: "1",
-      date: "2025-01-01",
-      activityType: "chat",
-      activityDetails: { message: "Hello" },
-    },
-    {
-      userId: "1",
-      date: "2025-01-01",
-      activityType: "goal",
-      activityDetails: { goal: "Run 5km" },
-    },
-    {
-      userId: "1",
-      date: "2025-01-01",
-      activityType: "summary",
-      activityDetails: { summary: "Weekly Review" },
-    },
-  ];
-
   return (
     <Router>
       <Routes>
@@ -77,11 +62,60 @@ function App() {
             path="calendar"
             element={
               <PrivateRoute>
-                <CalendarPage logs={logs} />
+                <CalendarPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="goals"
+            element={
+              <PrivateRoute>
+                <GoalsDisplay />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="create-goal"
+            element={
+              <PrivateRoute>
+                <CreateGoalForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="loading"
+            element={
+              <PrivateRoute>
+                <LoadingPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="roadmap"
+            element={
+              <PrivateRoute>
+                <Roadmap />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="learning"
+            element={
+              <PrivateRoute>
+                <LearningModule />
               </PrivateRoute>
             }
           />
         </Route>
+
+        <Route
+          path="skillsync"
+          element={
+            <PrivateRoute>
+              <SkillSyncPortal />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
