@@ -1,0 +1,30 @@
+POST http://localhost:5000/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "yourpassword"
+}
+
+###
+
+POST http://localhost:5000/api/auth/onboard HTTP/1.1
+content-type: application/json
+
+{
+  "id": "678ca9848ddeaf05a68c53c5",
+  "education": "Bachelor's in Computer Science",
+  "profession": "SDE Engineer",
+  "bio": "Passionate about coding and technology."
+}
+
+###
+
+POST http://localhost:5000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "yourpassword"
+}
